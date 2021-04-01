@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
     
-    def create
+   def create
         @book = Book.find(params[:id])
         @like = Like.new(
             user_id: current_user.id,
@@ -8,17 +8,18 @@ class LikesController < ApplicationController
             )
             
         @like.save
-        redirect_to book_path(@book)
-    end
+        redirect_back(fallback_location: root_path)
+   end
     
-    def destroy
+   def destroy
         @book = Book.find(params[:id])
         @like = Like.find_by(
             user_id: current_user.id,
             book_id: params[:id]
             )
         @like.destroy
-        redirect_to book_path(@book)
-    end
+        redirect_back(fallback_location: root_path)
+   end
+
     
 end
