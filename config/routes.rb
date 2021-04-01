@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   
   root 'homes#top'
   get 'home/about' => 'homes#about'
+  
+  post "likes/:id/create" => "likes#create", as: :like
+  delete "likes/:id/destroy" => "likes#destroy", as: :liked
+  
 end
