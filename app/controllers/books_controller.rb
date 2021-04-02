@@ -7,11 +7,13 @@ class BooksController < ApplicationController
     @user = User.find(@book.user_id)
     @book2 = Book.new
     @likes_count = Like.where(book_id: @book.id).count
+    @comments = BookComment.where(book_id: @book.id)
   end
 
   def index
     @books = Book.all
     @book = Book.new
+    @comments = BookComment.where(book_id: @book.id).count
   end
 
   def create
