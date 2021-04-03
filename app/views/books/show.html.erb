@@ -46,9 +46,10 @@
           <% end %>
         </tbody>
       </table>
-      <%= form_with model:@book_comment, url:"/book/:id/book_comments", local:true do |f| %>
+      <%= form_with model:@comment, url:"/books/:book_id/book_comments", local:true do |f| %>
         <div>
-        <%= f.text_area :bo, class: "form-control comment" %>
+        <%= f.text_area :bo, class: "form-control comment_bo" %>
+        <%= f.hidden_field :book_id, value: @book.id %>
         </div>
         <%= f.submit class: 'btn btn-success' %>
       <% end %>
