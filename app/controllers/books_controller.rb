@@ -14,7 +14,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
-    @comments = BookComment.where(book_id: @book.id).count
   end
 
   def create
