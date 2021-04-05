@@ -11,14 +11,13 @@ Rails.application.routes.draw do
   post "likes/:id/create" => "likes#create", as: :likes
   delete "likes/:id/destroy" => "likes#destroy", as: :like
   
-  # post "/books/:id/book_comments" => "book_comments#create", as: :comments
-  # delete "/books/:id/book_comment" => "book_comments#destroy", as: :book_book_comment
- 
- 
+  post 'follow/:id' => 'relationships#follow', as: 'follow' 
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get 'follow/:id/index' => 'relationships#follow_index', as: 'follow_index'
+  get 'follower/:id/index' => 'relationships#follower_index', as: 'follower_index'
+  
   
   root 'homes#top'
   get 'home/about' => 'homes#about'
-  
-  
   
 end
