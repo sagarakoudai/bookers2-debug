@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   end
   
   
-  
   post "likes/:id/create" => "likes#create", as: :likes
   delete "likes/:id/destroy" => "likes#destroy", as: :like
   
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   get 'follow/:id/index' => 'relationships#follow_index', as: 'follow_index'
   get 'follower/:id/index' => 'relationships#follower_index', as: 'follower_index'
   
+   get '/search', to: 'search#search'
   
   root 'homes#top'
   get 'home/about' => 'homes#about'
