@@ -18,15 +18,11 @@
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
           <% if Like.find_by(user_id: current_user.id, book_id: @book.id) %>
-            <td><%= link_to unlike_path(@book), method: :delete, class: "like" do %>
-               <i class="fas fa-heart"><%= @likes_count %></i>
-            <% end %>
-            </td>
+            <td>
+              <div id="like_<%= @book.id %>"><%= render 'likes/like', book: @book %></div>
+              </td>
           <% else %>
-            <td><%= link_to like_path(@book), method: :post, class: "unlike" do %>
-               <i class="fas fa-heart"><%= @likes_count %></i>
-            <% end %>
-            </td>
+            <td><%= render 'likes/unlike', book: @book %></td>
           <% end %>
           <% if @book.user_id == current_user.id %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>

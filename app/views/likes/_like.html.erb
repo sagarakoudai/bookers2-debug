@@ -1,2 +1,4 @@
-<%= link_to likes_path(@book), method: :post, class: "liked" do %>
-               <i class="fas fa-heart"><%= @likes_count %>
+<%= link_to unlike_path(book), method: :delete, class: "like", remote: true do %>
+    <i class="fas fa-heart"></i>
+    <%= book.likes.count %>
+<% end %>
