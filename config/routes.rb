@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   end
   
   
-  post "likes/:id/create" => "likes#create", as: :likes
-  delete "likes/:id/destroy" => "likes#destroy", as: :like
+  post "like/:id/create" => "likes#create", as: :like
+  delete "unlike/:id/destroy" => "likes#destroy", as: :unlike
   
   post 'follow/:id' => 'relationships#follow', as: 'follow' 
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
