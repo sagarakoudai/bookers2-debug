@@ -16,13 +16,8 @@
         </td>
         <td><%= link_to book.title, book_path(book), class: "book_#{book.id}" %></td>
         <td><%= book.body %></td>
-        <% if Like.find_by(user_id: current_user.id, book_id: book.id) %>
-            <td><%= render 'likes/like', book: book %>
-            </td>
-          <% else %>
-            <td><%= render 'likes/unlike', book: book %></td>
-          <% end %>
-            <td>コメント数 <%= book.book_comments.count %></td>
+        <%= render 'likes/like', book: book %>
+        <td>コメント数 <%= book.book_comments.count %></td>
       </tr>
     <% end %>
   </tbody>

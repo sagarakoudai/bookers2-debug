@@ -1,13 +1,18 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
+      
       <h2>User info</h2>
       <%= render 'users/info', user: @user  %>
+      
       <h2 class="mt-3">New book</h2>
       <%= render 'form', book: Book.new %>
+      
     </div>
+    
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
+  		
   		<table class='table'>
   		  <tr>
   		    <td><%= link_to user_path(@book.user) do %>
@@ -17,18 +22,15 @@
           </td>
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
-          <% if Like.find_by(user_id: current_user.id, book_id: @book.id) %>
-            <td>
-              <div id="like_<%= @book.id %>"><%= render 'likes/like', book: @book %></div>
-              </td>
-          <% else %>
-            <td><%= render 'likes/unlike', book: @book %></td>
-          <% end %>
+          <div id="like_<%= @book.id %>">
+            <%= render 'likes/like', book: @book %>
+          </div>
           <% if @book.user_id == current_user.id %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
           <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
         </tr>
+        
         <tbody>
           <% @book.book_comments.each do |comment| %>
           <tr>
@@ -43,6 +45,7 @@
           </tr>
           <% end %>
         </tbody>
+        
       </table>
       <%= form_with model:@comment, url: book_book_comments_path(@book), local:true do |f| %>
         <div>

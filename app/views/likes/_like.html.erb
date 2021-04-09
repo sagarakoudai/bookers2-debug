@@ -1,4 +1,17 @@
-<%= link_to unlike_path(book), method: :delete, class: "like", remote: true do %>
-    <i class="fas fa-heart"></i>
-    <%= book.likes.count %>
+<div id = "like_<%= book.id %>">
+<% if Like.find_by(user_id: current_user.id, book_id: book.id) %>
+    <td>
+      <%= link_to book_like_path(book.id), method: :delete, class: "like", remote: true do %>
+        <i class="fas fa-heart"></i>
+        <%= book.likes.count %>
+      <% end %>
+    </td>
+<% else %>
+    <td>
+      <%= link_to book_likes_path(book.id), method: :post, class: "unlike", remote: true do %>
+        <i class="fas fa-heart"></i>
+        <%= book.likes.count %>
+      <% end %>
+    </td>
 <% end %>
+</div>

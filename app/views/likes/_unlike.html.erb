@@ -1,5 +1,0 @@
-<div id="like_<%= book.id %>">
-<%= link_to like_path(book), method: :post, class: "unlike", remote: true do %>
-    <i class="fas fa-heart"><%= book.likes.count %></i>
-<% end %>
-</div>

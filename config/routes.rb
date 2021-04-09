@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resources :books
   resources :books do
     resources :book_comments,only: [:create,:destroy]
+    # resources :likes,only: [:create,:destroy]
   end
-  
-  
-  post "like/:id/create" => "likes#create", as: :like
-  delete "unlike/:id/destroy" => "likes#destroy", as: :unlike
+ 
+ 
+  post "like/:id/create" => "likes#create", as: :book_likes
+  delete "unlike/:id/destroy" => "likes#destroy", as: :book_like
   
   post 'follow/:id' => 'relationships#follow', as: 'follow' 
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'

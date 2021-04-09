@@ -1,1 +1,1 @@
-$("#like_<%= book.id %>").html('<%= j(render partial: "likes/like") %>');
+$("#like_<%= @book.id %>").html('<%= j(render "likes/like", book: @book) %>');
