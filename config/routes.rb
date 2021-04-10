@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
+  
   resources :users,only: [:show,:index,:edit,:update]
-  resources :books
   resources :books do
     resources :book_comments,only: [:create,:destroy]
     resource :likes,only: [:create,:destroy]
   end
  
- 
-  # post "like/:id/create" => "likes#create", as: :book_likes
-  # delete "unlike/:id/destroy" => "likes#destroy", as: :book_like
   
   post 'follow/:id' => 'relationships#follow', as: 'follow' 
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
