@@ -1,7 +1,6 @@
-<div id = "like_<%= book.id %>">
-<% if Like.find_by(user_id: current_user.id, book_id: book.id) %>
+<% if book.favorited_by?(current_user) %>
     <td>
-      <%= link_to book_like_path(book.id), method: :delete, class: "like", remote: true do %>
+      <%= link_to book_likes_path(book.id), method: :delete, class: "like", remote: true do %>
         <i class="fas fa-heart"></i>
         <%= book.likes.count %>
       <% end %>
@@ -14,4 +13,3 @@
       <% end %>
     </td>
 <% end %>
-</div>
